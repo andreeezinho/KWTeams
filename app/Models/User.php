@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    //informa que usuario pode ter varias tarefas
+    public function tarefas(){
+        return $this->hasMany('App\Models\Tarefa');
+    }
 }

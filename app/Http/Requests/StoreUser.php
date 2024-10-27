@@ -12,7 +12,8 @@ class StoreUser extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        //RETORNAR PARA TRUE PARA AUTORIZAR
+        return true;
     }
 
     /**
@@ -42,7 +43,9 @@ class StoreUser extends FormRequest
                 'required',
                 'min: 8',
                 'max: 100'
-            ]
+            ],
+
+            'icone' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 }

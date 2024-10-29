@@ -11,6 +11,12 @@ use App\Http\Controllers\TarefaController;
 //definindo que rotas só podem ser acessadas se o usuario estiver autenticado
 Route::middleware('auth')->group(function(){
 
+    //rota para criar a tarefa
+    Route::get('/tarefas', [TarefaController::class, 'store'])->name('tarefas.store');
+
+    //rota para view de nova tarefa
+    Route::get('/tarefas/create', [TarefaController::class, 'create'])->name('tarefas.create');
+
     //rota para a HOME
     Route::get('/', function () {
         return view('welcome');

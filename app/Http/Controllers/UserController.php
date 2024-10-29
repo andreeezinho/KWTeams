@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+//importando request de User
 use App\Http\Requests\StoreUser;
+
+//importando model user
 use App\Models\User;
 
 class UserController extends Controller

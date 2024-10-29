@@ -1,0 +1,24 @@
+.content{
+    min-height: 90vh;
+}
+
+.navbar{
+    width: 100%;
+}
+
+@media(max-width: 992px){
+    .menu-none{
+        display: none;
+    }
+}
+
+@media(min-width: 992px) {
+    
+    .offcanvas-header.d-table.menu-phone {
+        display: none !important;
+    }
+}
+
+input[type="file"]::file-selector-button{
+    display: none;
+}

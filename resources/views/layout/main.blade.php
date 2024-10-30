@@ -86,7 +86,7 @@
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="#"><i class="bi-person-fill"></i> Meu Perfil</a></li>
                                         <li><a class="dropdown-item" href="#"><i class="bi-people-fill"></i> Equipes</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="bi-person-plus-fill"></i> Criar Equipe</a></li>
+                                        <li><a class="dropdown-item" href="/equipes/create"><i class="bi-person-plus-fill"></i> Criar Equipe</a></li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>

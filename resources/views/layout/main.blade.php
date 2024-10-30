@@ -13,7 +13,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-lg-5" aria-label="Offcanvas navbar large">
             <div class="container-fluid px-lg-5">
                 <a class="navbar-brand" href="/">
-                    <img src="/img/logo.png" alt="LOGO PROJETO" width="50px">
+                    <img src="/img/logo-nav.png" alt="LOGO PROJETO" width="50px">
                 </a>
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
@@ -92,7 +92,7 @@
         </nav>
     </header>
     
-    <section class="content">
+    <section class="container">
         @yield('content')
     </section>
 

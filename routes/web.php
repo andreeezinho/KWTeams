@@ -12,7 +12,7 @@ use App\Http\Controllers\TarefaController;
 Route::middleware('auth')->group(function(){
 
     //rota para criar a tarefa
-    Route::get('/tarefas', [TarefaController::class, 'store'])->name('tarefas.store');
+    Route::post('/tarefas', [TarefaController::class, 'store'])->name('tarefas.store');
 
     //rota para view de nova tarefa
     Route::get('/tarefas/create', [TarefaController::class, 'create'])->name('tarefas.create');

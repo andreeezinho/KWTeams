@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('tarefas', function (Blueprint $table) {
-            //coluna de status da tarefa
-            $table->enum('status', ['Fazer', 'Fazendo', 'Feito']);
+            //id da equipe
+            $table->foreignId('equipe_id')->nullable()->constrained();
         });
     }
 
@@ -23,8 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('tarefas', function (Blueprint $table) {
-            //rollback para desfazer
-            $table->dropColumn('status');
+            //metodo para deletar em cascata no rollback
+            $table->foreignId('equipe_id')->constrained()->onDelete('cascade');
         });
     }
 };

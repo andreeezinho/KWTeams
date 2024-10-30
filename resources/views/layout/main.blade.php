@@ -23,7 +23,7 @@
                 <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
                     <div class="offcanvas-header d-table menu-phone">
                         <div class="d-flex">
-                            <img src="/img/users/{{auth()->user()->icone}}" class="offcanvas-title rounded-circle" width="25px" id="offcanvasNavbar2Label">
+                            <img src="/img/users/{{auth()->user()->icone ?? 'default.jpg'}}" class="offcanvas-title rounded-circle" width="25px" id="offcanvasNavbar2Label">
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
 
@@ -67,7 +67,7 @@
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="/img/users/{{auth()->user()->icone}}" alt="icone" class="rounded-circle" width="25px">
+                                    <img src="/img/users/{{auth()->user()->icone ?? 'default.jpg'}}" alt="icone" class="rounded-circle" width="25px">
                                 </a>
 
                                 <ul class="dropdown-menu">

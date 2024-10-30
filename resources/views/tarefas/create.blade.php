@@ -17,17 +17,17 @@
                         <div class="row my-4">  
                             <div class="col-4 d-flex flex-column">
                                 <label for="fazer" class="mb-2"><i class="bi-clipboard2-minus-fill"></i> Fazer </label>                     
-                                <input type="radio" name="status" id="fazer"> 
+                                <input type="radio" name="status" value="Fazer"> 
                             </div>
 
                             <div class="col-4 d-flex flex-column">
                                 <label for="fazendo" class="mb-2"><i class="bi-kanban-fill"></i> Fazendo </label>                     
-                                <input type="radio" name="status" id="fazendo"> 
+                                <input type="radio" name="status" value="Fazendo"> 
                             </div>
 
                             <div class="col-4 d-flex flex-column">
                                 <label for="feito" class="mb-2"><i class="bi-check"></i> Feito </label>                     
-                                <input type="radio" name="status" id="feito"> 
+                                <input type="radio" name="status" value="Feito"> 
                             </div>
                         </div>
 

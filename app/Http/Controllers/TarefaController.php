@@ -60,6 +60,56 @@ class TarefaController extends Controller
         Tarefa::create($validaDados);
 
         return redirect('/');
+    }
 
+    //excluir tarefa
+    public function destroy($id){
+        //verifica se id da tarefa existe
+        if(!$tarefa = Tarefa::find($id)){
+            return redirect('/');
+        }
+
+        //verifica se usuario realmente é o dono da tarefa
+        if(!auth()->user()->id == $tarefa->user_id){
+            return redirect('/');
+        }
+
+        //deletar
+        $tarefa->delete();
+
+        return redirect('/');
+    }
+
+    //atualizar tarefa para o próximo status
+    public function update(Tarefa $request, $id){
+        //verifica se id da tarefa existe
+        if(!$tarefa = Tarefa::find($id)){
+            return 'nao encontrou tareda';
+        }
+
+        //verifica se usuario realmente é o dono da tarefa
+        if(!auth()->user()->id == $tarefa->user_id){
+            return 'nao é o dono';
+        }
+
+        //fazer request apenas da coluna STATUS
+        $status = $request->only('status');
+
+        //se status da tarefa for fazer
+        if($tarefa->status == "Fazer"){
+            //atualiza o request, apenas no STATUS
+            $status['status'] = "Fazendo";
+        }
+
+        //se status da tarefa for fazendo
+        if($tarefa->status == "Fazendo"){
+            //atualiza o request, apenas no STATUS
+            $status['status'] = "Feito";
+        }
+
+        //metodo para atualizar (atualizando somente 'status')
+        $tarefa->update($status);
+
+        return redirect('/');
     }
 }

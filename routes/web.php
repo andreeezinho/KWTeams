@@ -10,6 +10,11 @@ use App\Http\Controllers\TarefaController;
 
 //definindo que rotas só podem ser acessadas se o usuario estiver autenticado
 Route::middleware('auth')->group(function(){
+    //rota para atualizar status
+    Route::put('/tarefas/{id}', [TarefaController::class, 'update'])->name('tarefas.update');
+
+    //rota para deletar tarefa
+    Route::delete('/tarefas/{id}', [TarefaController::class, 'destroy'])->name('tarefas.destroy');
 
     //rota para criar a tarefa
     Route::post('/tarefas', [TarefaController::class, 'store'])->name('tarefas.store');

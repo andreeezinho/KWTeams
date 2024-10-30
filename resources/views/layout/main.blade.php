@@ -29,62 +29,86 @@
 
 
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-5 border-top">
-                            <li class="nav-item mt-3">
-                                <a class="nav-link" href="/"><i class="bi-house-fill"></i> Home</a>
-                            </li>
+                            @auth
+                                <li class="nav-item mt-3">
+                                    <a class="nav-link" href="/"><i class="bi-house-fill"></i> Home</a>
+                                </li>
 
-                            <li class="nav-item mt-3">
-                                <a class="nav-link" href="{{route('tarefas.create')}}"><i class="bi-bookmark-plus-fill"></i> Nova Tarefa</a>
-                            </li>
+                                <li class="nav-item mt-3">
+                                    <a class="nav-link" href="{{route('tarefas.create')}}"><i class="bi-bookmark-plus-fill"></i> Nova Tarefa</a>
+                                </li>
 
-                            <li class="nav-item mt-3">
-                                <a class="nav-link" href="#"><i class="bi-person-fill"></i> Meu Perfil</a>
-                            </li>
+                                <li class="nav-item mt-3">
+                                    <a class="nav-link" href="#"><i class="bi-person-fill"></i> Meu Perfil</a>
+                                </li>
 
-                            <li class="nav-item mt-3">
-                                <a class="nav-link" href="#"><i class="bi-people-fill"></i> Equipes</a>
-                            </li>
+                                <li class="nav-item mt-3">
+                                    <a class="nav-link" href="#"><i class="bi-people-fill"></i> Equipes</a>
+                                </li>
 
-                            <li class="nav-item mt-3">
-                                <a class="nav-link" href="#"><i class="bi-person-plus-fill"></i> Criar Equipe</a>
-                            </li>
+                                <li class="nav-item mt-3">
+                                    <a class="nav-link" href="#"><i class="bi-person-plus-fill"></i> Criar Equipe</a>
+                                </li>
 
-                            <li class="nav-item mt-3">
-                                <a class="nav-link" href="#"><i class="bi-door-open-fill"></i> Sair</a>
-                            </li>
+                                <li class="nav-item mt-3">
+                                    <a class="nav-link" href="#"><i class="bi-door-open-fill"></i> Sair</a>
+                                </li>
+                            @endauth
+
+                            @guest
+                                <li class="nav-item mt-3">
+                                    <a class="btn btn-light" href="/login"><i class="bi-person-fill"></i> Login</a>
+                                </li>
+
+                                <li class="nav-item mt-3">
+                                    <a class="nav-link" href="{{route('users.create')}}"><i class="bi-person-plus-fill"></i> Cadastre-se</a>
+                                </li>
+                            @endguest
                         </ul>
                     </div>
 
                     <div class="offcanvas-body menu-none">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/"><i class="bi-house-fill"></i> Home</a>
-                            </li>
+                            @auth
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/"><i class="bi-house-fill"></i> Home</a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('tarefas.create')}}"><i class="bi-bookmark-plus-fill"></i> Nova Tarefa</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('tarefas.create')}}"><i class="bi-bookmark-plus-fill"></i> Nova Tarefa</a>
+                                </li>
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="/img/users/{{auth()->user()->icone ?? 'default.jpg'}}" alt="icone" class="rounded-circle" width="25px">
-                                </a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="/img/users/{{auth()->user()->icone ?? 'default.jpg'}}" alt="icone" class="rounded-circle" width="25px">
+                                    </a>
 
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#"><i class="bi-person-fill"></i> Meu Perfil</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="bi-people-fill"></i> Equipes</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="bi-person-plus-fill"></i> Criar Equipe</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li>
-                                        <form action="/logout" method="POST">
-                                            @csrf
-                                            <a class="dropdown-item" href="/logout" onclick="event.preventDefault(); this.closest('form').submit();"><i class="bi-door-open-fill"></i> Sair</a>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#"><i class="bi-person-fill"></i> Meu Perfil</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi-people-fill"></i> Equipes</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi-person-plus-fill"></i> Criar Equipe</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li>
+                                            <form action="/logout" method="POST">
+                                                @csrf
+                                                <a class="dropdown-item" href="/logout" onclick="event.preventDefault(); this.closest('form').submit();"><i class="bi-door-open-fill"></i> Sair</a>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            @endauth
+
+                            @guest
+                                <li class="nav-item mt-3">
+                                    <a class="btn btn-light" href="/login"><i class="bi-person-fill"></i> Login</a>
+                                </li>
+
+                                <li class="nav-item mt-3">
+                                    <a class="nav-link" href="{{route('users.create')}}"><i class="bi-person-plus-fill"></i> Cadastre-se</a>
+                                </li>
+                            @endguest
                         </ul>
                     </div>
                 </div>

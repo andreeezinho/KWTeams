@@ -5,15 +5,6 @@
 @section('content')
     <div class="row justify-content-center mt-5">
         <div class="col-12 col-md-8 col-lg-4 text-center">
-            {{--imprimir erros caso o REQUEST reporte algo --}}
-            @if($errors->any())
-                @foreach($errors->all() as $error)
-                    <div class="alert alert-danger">
-                        {{$error}}
-                    </div>
-                @endforeach
-            @endif
-
             <div class="card">
                 <div class="card-body">
                     <form action="{{route('users.store')}}" method="POST" enctype="multipart/form-data">

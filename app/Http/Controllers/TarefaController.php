@@ -59,19 +59,19 @@ class TarefaController extends Controller
         //cria no banco de dados
         Tarefa::create($validaDados);
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Tarefa criada com sucesso!');
     }
 
     //excluir tarefa
     public function destroy($id){
         //verifica se id da tarefa existe
         if(!$tarefa = Tarefa::find($id)){
-            return redirect('/');
+            return redirect('/')->with('erro', 'Tarefa não encontrada');
         }
 
         //verifica se usuario realmente é o dono da tarefa
         if(!auth()->user()->id == $tarefa->user_id){
-            return redirect('/');
+            return redirect('/')->with('erro', 'Tarefa não encontrada');
         }
 
         //deletar
@@ -84,12 +84,12 @@ class TarefaController extends Controller
     public function update(Tarefa $request, $id){
         //verifica se id da tarefa existe
         if(!$tarefa = Tarefa::find($id)){
-            return 'nao encontrou tareda';
+            return redirect('/')->with('erro', 'Tarefa não encontrada');
         }
 
         //verifica se usuario realmente é o dono da tarefa
         if(!auth()->user()->id == $tarefa->user_id){
-            return 'nao é o dono';
+            return redirect('/')->with('erro', 'Tarefa não encontrada');
         }
 
         //fazer request apenas da coluna STATUS

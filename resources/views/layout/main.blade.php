@@ -117,6 +117,8 @@
     </header>
     
     <section class="container">
+        @include('components.alert-errors')
+        @include('components.alert-success')
         @yield('content')
     </section>
 

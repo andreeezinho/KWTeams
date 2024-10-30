@@ -12,6 +12,32 @@ use App\Http\Requests\StoreTarefa;
 
 class TarefaController extends Controller
 {
+    //classe da view home para consultar tarefas
+    public function index(){
+        //consultar todas as tarefas
+        $tarefas = Tarefa::all();
+
+        //passar dados do usuario
+        $user = auth()->user();
+
+        //verifica horario
+            $hora = date('H');
+
+            if($hora > '00' && $hora < '12'){
+                $saudacao = "Bom dia";
+            }
+
+            if($hora >= '12' && $hora < '18'){
+                $saudacao = "Boa tarde";
+            }
+
+            if($hora >= '18' && $hora < '23'){
+                $saudacao = "Boa noite";
+            }
+
+        return view('welcome', ['tarefas' => $tarefas, 'user' => $user, 'saudacao' => $saudacao]);
+    }
+
     //view de formulario de criar tarefa
     public function create(){
 

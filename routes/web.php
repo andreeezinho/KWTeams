@@ -18,9 +18,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/tarefas/create', [TarefaController::class, 'create'])->name('tarefas.create');
 
     //rota para a HOME
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    Route::get('/', [TarefaController::class, 'index'])->name('home');
 
 });
 

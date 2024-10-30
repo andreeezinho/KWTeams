@@ -17,23 +17,23 @@ class TarefaController extends Controller
         //passar dados do usuario
         $user = auth()->user();
 
-        //consultar todas as tarefas
-        $tarefas = Tarefa::all();
+        //consultar todas as tarefas a partir de um usuario
+        $tarefas = $user->tarefas;  
 
         //verifica horario
-            $hora = date('H');
+        $hora = date('H');
 
-            if($hora > '00' && $hora < '12'){
-                $saudacao = "Bom dia";
-            }
+        if($hora > '00' && $hora < '12'){
+            $saudacao = "Bom dia";
+        }
 
-            if($hora >= '12' && $hora < '18'){
-                $saudacao = "Boa tarde";
-            }
+        if($hora >= '12' && $hora < '18'){
+            $saudacao = "Boa tarde";
+        }
 
-            if($hora >= '18' && $hora < '23'){
-                $saudacao = "Boa noite";
-            }
+        if($hora >= '18' && $hora < '23'){
+            $saudacao = "Boa noite";
+        }
 
         return view('welcome', ['tarefas' => $tarefas, 'user' => $user, 'saudacao' => $saudacao]);
     }

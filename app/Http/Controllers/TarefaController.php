@@ -14,11 +14,11 @@ class TarefaController extends Controller
 {
     //classe da view home para consultar tarefas
     public function index(){
-        //consultar todas as tarefas
-        $tarefas = Tarefa::all();
-
         //passar dados do usuario
         $user = auth()->user();
+
+        //consultar todas as tarefas
+        $tarefas = Tarefa::all();
 
         //verifica horario
             $hora = date('H');

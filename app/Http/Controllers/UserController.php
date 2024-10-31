@@ -22,10 +22,9 @@ class UserController extends Controller
         //valida os dados do request
         $validaDados = $request->validated();
 
-        
         if($request->hasFile('icone') && $request->file('icone')->isValid()){
             $requestImage = $request->icone;
-
+            
             //pegar nome do arquivo e transformar em md5
             $imageName = md5($requestImage->getclientOriginalName().strtotime("now")).".".$requestImage->getClientOriginalExtension();
 

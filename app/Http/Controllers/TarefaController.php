@@ -47,7 +47,7 @@ class TarefaController extends Controller
 
     //criar nova tarefa
     public function store(StoreTarefa $request){
-        //valida os dados do Model tarefa !!!!CRIAR REQUEST PARA FUNCIONAR!!!!!!
+        //valida os dados do Model tarefa
         $validaDados = $request->validated();
 
         //verifica id do usuario 

@@ -51,4 +51,9 @@ class User extends Authenticatable
     public function tarefas(){
         return $this->hasMany('App\Models\Tarefa');
     }
+
+    //informa que varios usuarios participam de varias equipes
+    public function equipeUser(){
+        return $this->belongsToMany('App\Models\Equipe');
+    }
 }

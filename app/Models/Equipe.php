@@ -19,4 +19,9 @@ class Equipe extends Model
     public function tarefas(){
         return $this->hasMany('App\Models\Tarefa');
     }
+
+    //informa que varias equipes tem varios usuario
+    public function users(){
+        return $this->belongsToMany('App\Models\User');
+    }
 }

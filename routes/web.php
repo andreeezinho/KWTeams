@@ -12,10 +12,10 @@ use App\Http\Controllers\TarefaController;
 Route::middleware('auth')->group(function(){
 
     //rota para criar equipe
-    Route::post('/equipes/store', [EquipeController::class], 'store')->name('equipe.store');
+    Route::post('/equipes/store', [EquipeController::class, 'store'])->name('equipe.store');
 
     //rota para view de criar equipe
-    Route::get('/equipes/create', [EquipeController::class], 'create')->name('equipes.create');
+    Route::get('/equipes/create', [EquipeController::class, 'create'])->name('equipes.create');
 
     //rota para atualizar status
     Route::put('/tarefas/{id}', [TarefaController::class, 'update'])->name('tarefas.update');

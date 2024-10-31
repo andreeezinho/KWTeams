@@ -9,7 +9,7 @@ class EquipeController extends Controller
     //view de criar equipe
     public function create(){
 
-        return v'iew('equipes.create')';
-
+        return view('equipes.create');
+        
     }
 }

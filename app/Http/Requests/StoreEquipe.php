@@ -30,7 +30,8 @@ class StoreEquipe extends FormRequest
             ],
 
             'descricao' => [
-                'string'
+                'string',
+                'nullable'
             ],
 
             'imagem' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'

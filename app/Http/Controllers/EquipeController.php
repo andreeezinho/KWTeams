@@ -57,4 +57,10 @@ class EquipeController extends Controller
         return redirect('/equipes')->with('success', 'Equipe criada com sucesso');
 
     }
+
+    //view de mostrar equipes
+    public function show(){
+
+        return view('equipes.show');
+    }
 }

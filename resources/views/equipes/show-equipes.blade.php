@@ -20,14 +20,22 @@
                             <p class="text-muted">{{$equipe->descricao}}</p>
 
                             <div class="d-flex mt-3 justify-content-center">
-                                @if ($participa == true)
+                                @if ($equipe->user_id == $userId)
                                     <span class="btn btn-secondary"><i class="bi-people-fill"></i> Sua equipe</span>
                                 @else
                                     <form action="{{route('equipes.participar', $equipe->id)}}" method="post">
                                         @csrf
-                                        <button class="btn btn-dark mx-2"><i class="bi-person-plus-fill"></i> Participar</button>
+
+                                        @if($equipe->users->contains('id', $userId))
+                                            <span class="btn btn-secondary"><i class="bi-people-fill"></i> Já participa</span>
+                                        @else
+                                            <button class="btn btn-dark mx-2"><i class="bi-person-plus-fill"></i> Participar</button>
+                                        @endif
+                                        
                                     </form>
                                 @endif
+
+                                
                             </div>
                         </div>
                     </div>

@@ -53,7 +53,9 @@ class EquipeController extends Controller
         $validaDados['user_id'] = $user;
 
         //cadastrar dados no banco de dados
-        Equipe::create($validaDados);
+        $equipe = Equipe::create($validaDados);
+
+        $equipe->users()->attach($user);
 
         //manda para a rota de equipes
         return redirect('/equipes')->with('success', 'Equipe criada com sucesso');
@@ -61,37 +63,13 @@ class EquipeController extends Controller
     }
 
     public function equipes(){
-        //consulta todas as equipes
-        $equipes = Equipe::All();
+        //idusuario autenticado
+        $userId = auth()->user()->id;
 
-        //verificar usuario autenticado
-        $user = auth()->user();
+        //consulta todas as equipes, jutamente com os usuario da tabela equipeUser
+        $equipes = Equipe::with('users')->get();
 
-        $id = $user->id;
-
-        //verificar se usuario já participa da equipe
-        $participa = false;
-
-        //transforma em array e percorre ele
-        $verificaEquipe = $user->equipeUser->toArray();
-
-        //percorrer array para verificar id do usuario
-        foreach($verificaEquipe as $idUser){
-            //se id do usuario na tabela EquipeUser existir
-            if($idUser['user_id'] == $id){
-                $participa = true;
-            }
-        }
-
-        //percorre todas as equipes
-        foreach($equipes as $equipe){
-            //verifica se usuario é o dono da equipe
-            if($id == $equipe->user_id){
-                $participa = true;
-            }
-        }
-
-        return view('equipes.show-equipes', ['equipes' => $equipes, 'participa' => $participa]);
+        return view('equipes.show-equipes', ['equipes' => $equipes, 'userId' => $userId]);
     }
 
     //view de mostrar equipes

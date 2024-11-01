@@ -11,7 +11,7 @@ class Equipe extends Model
     protected $fillable = [
         'nome',
         'descricao',
-        'dono',
+        'user_id',
         'imagem'
     ];
 

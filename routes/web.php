@@ -11,8 +11,17 @@ use App\Http\Controllers\TarefaController;
 //definindo que rotas só podem ser acessadas se o usuario estiver autenticado
 Route::middleware('auth')->group(function(){
 
+    //rota para usuario sair de uma equipe
+    Route::delete('/equipes/{id}/sair', [EquipeController::class, 'sair'])->name('equipes.sair');
+
+    //rota para participar de uma equipe
+    Route::post('/equipes/{id}/participar', [EquipeController::class, 'participar'])->name('equipes.participar');
+
+    //rota para mostrar todas as equipes
+    Route::get('/equipes', [EquipeController::class, 'equipes'])->name('equipes');
+
     //rota para view de mostrar equipes
-    Route::get('/equipes', [EquipeController::class, 'show'])->name('equipes');
+    Route::get('/users/equipes', [EquipeController::class, 'show'])->name('users.equipes');
 
     //rota para criar equipe
     Route::post('/equipes/store', [EquipeController::class, 'store'])->name('equipes.store');

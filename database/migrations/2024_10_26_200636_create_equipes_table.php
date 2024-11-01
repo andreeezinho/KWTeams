@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome', '100');
             $table->text('descricao')->nullable();
-            $table->string('dono');
+            $table->foreignId('user_id')->constrained();
             $table->string('imagem')->default('default.png');
             $table->timestamps();
         });

@@ -23,3 +23,8 @@ input[type="file"]::file-selector-button{
 .bg-cinza{
     background-color: rgb(247, 247, 247);
 }
+
+.icone{
+    width: 30px;
+    height: 30px;
+}

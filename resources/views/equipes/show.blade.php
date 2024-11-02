@@ -23,10 +23,10 @@
                                 <form action="{{route('equipes.sair', $equipe->id)}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger mx-2"><i class="bi-trash-fill"></i> Sair</button>
+                                    <button class="btn btn-danger mx-2"><i class="bi-box-arrow-left"></i> Sair</button>
                                 </form>
 
-                                <a href="#" class="btn btn-primary mx-2"><i class="bi-people-fill"></i> Ver</a>
+                                <a href="{{route('equipes.tarefas', $equipe->id)}}" class="btn btn-primary mx-2"><i class="bi-people-fill"></i> Entrar</a>
                             </div>
                         </div>
                     </div>

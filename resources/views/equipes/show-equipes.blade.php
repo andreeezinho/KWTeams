@@ -9,7 +9,7 @@
 
         @if(count($equipes) > 0)
             @foreach ($equipes as $equipe)
-                <div class="col-3">
+                <div class="col-12 col-md-6 col-lg-3 my-3">
                     <div class="card">
                         <div class="card-header d-flex">
                             <img src="/img/equipes/{{$equipe->imagem}}" alt="Icone equipe" class="rounded-circle icone">

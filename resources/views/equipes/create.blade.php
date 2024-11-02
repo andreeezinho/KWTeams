@@ -18,7 +18,7 @@
                         <label class="d-flex flex-column" for="imagem">
                             <span class="text-muted">Escolha uma foto para sua equipe</span>
                             <div class="position-relative">
-                                <img src="/img/equipes/default.png" alt="default" class="bg-cinza rounded-circle mx-auto" width="50px">
+                                <img src="/img/equipes/default.png" alt="default" class="bg-cinza rounded-circle mx-auto my-3" width="50px">
                                 <span class="text-secondary position-absolute bottom-0 camera-icone"><i class="bi-camera-fill"></i></span>
                             </div>
                         </label>

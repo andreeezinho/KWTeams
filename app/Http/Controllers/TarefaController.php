@@ -122,9 +122,19 @@ class TarefaController extends Controller
         //usuario autenticado
         $user = auth()->user();
 
-        //verificar se equipe existe
-        if(!$equipes = Equipe::find($id)){
-            return redirect('/equipes')->with('erro', 'Equipe não encontrada');
+        //consulta todas as equipes, jutamente com os usuario da tabela equipeUser
+        $equipes = Equipe::with('users')->find($id);
+
+        //se equipe nao exitir
+        if(!$equipes){
+            return redirect('/equipes')->with('erro', 'Equipe não existe');
+        }
+
+        //se usuario estiver logado
+                   //pega users(funcao que ta no Model Equipe) e verifica se contem (contain()) id do usuario
+        if($user && !$equipes->users->contains('id', $user->id)){
+            //redirecionar para view de equipes
+            return redirect('/equipes')->with('erro', 'Equipe não poraaaaaaaaaaa');
         }
 
         //pegar todas as tarefas que a equipe tem

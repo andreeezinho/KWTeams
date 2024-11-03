@@ -11,6 +11,12 @@ use App\Http\Controllers\TarefaController;
 //definindo que rotas só podem ser acessadas se o usuario estiver autenticado
 Route::middleware('auth')->group(function(){
 
+    //rota para ver participantes da equipe
+    Route::get('/equipes/{id}/participantes', [EquipeController::class, 'participantes'])->name('equipes.participantes');
+
+    //rota para editar equipe
+    Route::get('/equipes/{id}/edit', [EquipeController::class, 'edit'])->name('equipes.edit');  
+
     //rota para deletar tarefa
     Route::delete('/equipes/{id}/tarefas/destroy/{tarefa}', [TarefaController::class, 'equipesTarefasDestroy'])->name('equipes.tarefas.destroy');
 

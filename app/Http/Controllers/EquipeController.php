@@ -104,4 +104,42 @@ class EquipeController extends Controller
 
         return redirect('/users/equipes')->with('success', 'Você saiu da equipe!');
     }
+
+    //class para view de editar equipe
+    public function edit($id){
+        return view('/equipes/edit');
+    }
+
+    public function participantes($id){
+        $user = auth()->user();
+
+        //verificar se equipe existe
+        if(!$equipes = Equipe::find($id)){
+            return back()->with('erro', 'equipe não existe');
+        }
+
+        //verificar se usuario é o dono da equipe
+        if($equipes->user_id != $user->id){
+            return redirect('/')->with('erro', 'Você não tem permissão necessária');
+        }
+
+        return view('/equipes/participantes', ['equipes' => $equipes->users, 'equipeId' => $equipes]);
+    }
+
+    public function participantesDestroy($id, $participante){
+        //pegar id do usuario
+        $user = auth()->user();
+
+        if(!$equipes = Equipe::find($id)){
+            return back()->with('erro', 'equipe não existe');
+        }
+
+        //verifica se usuário é o dono da equipe
+        if($equipes->user_id == $user->id){
+            //pega usuario que participa da equipe e retira a relação deles detach()
+            $equipes->users()->detach($participante);
+        }
+
+        return redirect()->route('equipes.participantes', $id)->with('success', 'Participante removido da equipe');
+    }
 }

@@ -17,6 +17,9 @@ Route::middleware('auth')->group(function(){
     //rota para ver participantes da equipe
     Route::get('/equipes/{id}/participantes', [EquipeController::class, 'participantes'])->name('equipes.participantes');
 
+    //rota para atualizar equipe
+    Route::put('/equipes/{id}/update', [EquipeController::class, 'update'])->name('equipes.update');  
+
     //rota para editar equipe
     Route::get('/equipes/{id}/edit', [EquipeController::class, 'edit'])->name('equipes.edit');  
 

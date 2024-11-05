@@ -18,7 +18,6 @@ class EquipeController extends Controller
 {
     //view de criar equipe
     public function create(){
-
         return view('equipes.create');
 
     }
@@ -107,7 +106,47 @@ class EquipeController extends Controller
 
     //class para view de editar equipe
     public function edit($id){
-        return view('/equipes/edit');
+        $equipe = Equipe::find($id);
+        $user = auth()->user();
+
+        //verifica se usuario é o dono da equipe
+        if($user->id != $equipe->user_id){
+            return redirect('/')->with('erro', 'Você não tem permissão');
+        }
+
+        return view('/equipes/edit', compact('equipe'));
+    }
+
+    //classe de atualizar equipe
+    public function update(StoreEquipe $request, $id){
+        //verificar se equipe existe
+        if(!$equipe = Equipe::find($id)){
+            return redirect('/')->with('erro', 'Equipe não encontrada');
+        }
+
+        //pega apenas o nome e descricao
+        $update = $request->only('nome', 'descricao');
+
+        //verifica se há imagem para update
+        if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
+            $requestImage = $request->imagem;
+
+            //pegar nome do arquivo e transformar em md5
+            $imageName = md5($requestImage->getclientOriginalName().strtotime("now")).".".$requestImage->getClientOriginalExtension();
+
+            //veriavel para dizer qual sera o destino da imagem
+            $destination = public_path('img/equipes');
+
+            //adicionar a imagem na pasta no projeto
+            $requestImage->move($destination, $imageName);
+
+            //a coluna no banco de dados 'icone' vai ser igual a $imageName
+            $update['imagem'] = $imageName;
+        }
+
+        $equipe->update($update);
+
+        return redirect()->route('equipes.tarefas', $id)->with('success', 'Dados da equipe editados com sucesso!');
     }
 
     public function participantes($id){

@@ -11,7 +11,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th><i class="bi-person-square"></i></th>
+                        <th></th>
                         <th>Participante</th>
                         <th>Email</th>
                         <th>Ações</th>

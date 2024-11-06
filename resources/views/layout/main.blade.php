@@ -39,7 +39,7 @@
                                 </li>
 
                                 <li class="nav-item mt-3">
-                                    <a class="nav-link" href="#"><i class="bi-person-fill"></i> Meu Perfil</a>
+                                    <a class="nav-link" href="{{route('users.edit', auth()->user()->id)}}"><i class="bi-person-fill"></i> Meu Perfil</a>
                                 </li>
 
                                 <li class="nav-item mt-3">
@@ -88,7 +88,7 @@
                                     </a>
 
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#"><i class="bi-person-fill"></i> Meu Perfil</a></li>
+                                        <li><a class="dropdown-item" href="{{route('users.edit', auth()->user()->id)}}"><i class="bi-person-fill"></i> Meu Perfil</a></li>
                                         <li><a class="dropdown-item" href="{{route('users.equipes')}}"><i class="bi-person-video2"></i> Suas Equipes</a></li>
                                         <li><a class="dropdown-item" href="{{route('equipes')}}"><i class="bi-people-fill"></i> Ver Equipes</a></li>
                                         <li><a class="dropdown-item" href="{{route('equipes.create')}}"><i class="bi-person-plus-fill"></i> Criar Equipe</a></li>

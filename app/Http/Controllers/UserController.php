@@ -44,4 +44,19 @@ class UserController extends Controller
         //retorna para home
         return redirect('/');
     }
+
+    //classe da view de editar usuarios
+    public function edit($id){
+        //verifica se usuario existe
+        if(!$user = User::find($id)){
+            return redirect('/')->with('erro', 'Usuário não existe');
+        }
+
+        //verifica se o usuário é o mesmo que o id
+        if($user->id != auth()->user()->id){
+            return redirect('/')->with('erro', 'Usuário não validado');
+        }
+
+        return view('users.edit', compact('user'));
+    }
 }

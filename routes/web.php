@@ -11,6 +11,9 @@ use App\Http\Controllers\TarefaController;
 //definindo que rotas só podem ser acessadas se o usuario estiver autenticado
 Route::middleware('auth')->group(function(){
 
+    //rota para atualizar usuario
+    Route::put('/users/{id}/update', [UserController::class, 'update'])->name('users.update');
+
     //rota para ver dados do usuario
     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
 

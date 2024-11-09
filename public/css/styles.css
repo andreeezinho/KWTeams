@@ -38,3 +38,7 @@ input[type="file"]::file-selector-button{
     width: 100px;
     height:100px;
 }
+
+.none{
+    text-decoration: none;
+}

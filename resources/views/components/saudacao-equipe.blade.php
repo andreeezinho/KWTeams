@@ -1,7 +1,9 @@
 <div class="col-12 mt-2 mb-5">
     <h2 class="">
-        <img src="/img/equipes/{{$equipes->imagem}}" alt="Logo equipe" class="rounded-circle icone-equipe">
-        {{$equipes->nome}}
+        <a href="{{route('equipes.tarefas', $equipes->id)}}" class="none text-dark">
+            <img src="/img/equipes/{{$equipes->imagem}}" alt="Logo equipe" class="rounded-circle icone-equipe">
+            {{$equipes->nome}}
+        </a>
         <div class="float-end d-flex">
             <a href="{{route('equipes.tarefas.create', $equipes->id)}}" class="btn btn-dark mx-1"><i class="bi-plus"></i> Criar Tarefa</a>
 
